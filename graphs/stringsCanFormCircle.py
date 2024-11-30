@@ -33,16 +33,19 @@ def can_form_circle(strings):
   queue = deque()
   seen_cycle = False
   if strings[0]:
-    queue.append(strings[0])
-    visited.add(strings[0])
+    queue.append(strings[0][0])
+    visited.add(strings[0][0])
+  
   while queue:
     cur = queue.popleft()
+    if cur not in adj:
+      continue
     for edge in adj[cur]:
-      if edge in visited:
-        seen_cycle = True
-      else:
-        queue.append(edge)
-        visited.add(edge)
+        if edge in visited:
+          seen_cycle = True
+        else:
+          queue.append(edge)
+          visited.add(edge)
 
   # if "all the strings in the array can be chained".
   # it is not necessarily clear to me whether the question is asking:
@@ -58,3 +61,8 @@ def can_form_circle(strings):
   return seen_cycle and len(strings) == len(visited)
 
 
+print(can_form_circle(["ab", "bc", "ca"]))
+print(can_form_circle(["ab", "bc", "cb"]))
+print(can_form_circle(["ab", "bc", "cz"]))
+print(can_form_circle(["ab", "bc", "d"]))
+print(can_form_circle(["d"]))
