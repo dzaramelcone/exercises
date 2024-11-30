@@ -23,19 +23,36 @@ def graph_shortest_path(graph, start, end):
     queue.append(Node(start))
     visited.add(start)
 
-  while queue and cur != end:
+  while queue:
     cur = queue.popleft()
-
+    if cur.value == end:
+      break
     for edge in graph[cur.value]:
       if edge in visited:
         continue
       queue.append(Node(edge, cur))
       visited.add(edge)
 
-    ans = []
-    while cur:
-      ans.append(cur)
-      cur = cur.prev
-    return ans[::-1]
+  if cur.value != end:
+    return []
+
+  ans = []
+  
+  while cur:
+    ans.append(cur.value)
+    cur = cur.prev
+  return ans[::-1]
   
   
+  
+g = {
+   1: [2, 3, 4],
+   2: [1, 5],
+   3: [1, 4],
+   4: [1, 3, 5],
+   5: [2, 4]
+}
+
+print(graph_shortest_path(g, 1, 5))
+print(graph_shortest_path(g, 1, 4))
+print(graph_shortest_path(g, 2, 3))
