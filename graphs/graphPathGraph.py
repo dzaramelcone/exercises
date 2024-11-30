@@ -33,12 +33,34 @@ def path_graph(graph):
       continue
     visited.clear()
     helper(v)
-    updated.extend(visited)
+    updated.update(visited)
     for edge in visited:
-      ans[edge].extend(visited)
+      # This works fine for undirected graphs but directed graphs can end up with duplicates.
+      # if directed, you need to create sets with this approach and convert them to lists if desired
+      # i wonder if there is a way to neatly pull it off without sets for directed graphs..
+      ans[edge].extend([x for x in visited if x != edge])
 
   return ans
 
 
 
       
+g = {
+   1: [2, 3, 4],
+   2: [1, 5],
+   3: [1, 4],
+   4: [1, 3, 5],
+   5: [2, 4],
+   6: []
+}
+print(path_graph(g))
+
+g = {
+   1: [2, 3, 4],
+   2: [1, 5],
+   3: [1, 4],
+   4: [1, 3, 5],
+   5: [2, 4],
+   6: [1]
+}
+print(path_graph(g))
