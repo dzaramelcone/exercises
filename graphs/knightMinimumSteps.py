@@ -16,7 +16,7 @@ from collections import deque
 def knight_min_steps(size, startPos, targetPos):
   def in_bounds(pos):
     x, y = pos
-    return 0 <= x < size and 0 <= y <= size
+    return 0 <= x < size and 0 <= y < size
   def get_moves(pos):
     x, y = pos
     return [
