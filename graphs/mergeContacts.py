@@ -49,7 +49,10 @@ def merge_contacts(contacts):
 t1 = {
   "Alice": ["alice@example.com", "alice@gmail.com"],
   "Bob": ["bob@example.com"],
-  "Alice Smith": ["alice@gmail.com"]
+  "John": ["john@example.com"],
+  "Alice Smith": ["alice@gmail.com"],
+  "John Doe": ["johndoe@example.com", "john@example.com"],
+  "John": ["johndoe@sample.com", "john@example.com"],
   }
 
 print(merge_contacts(t1))
