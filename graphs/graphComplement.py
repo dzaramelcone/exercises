@@ -27,10 +27,10 @@ module.exports = {
   graphTranspose,
 }
 '''
-import pprint
+from pprint import pprint
 
 def graph_complement(graph):
   return { v:[x for x in graph if x != v and x not in graph[v]] for v in graph }
 
 t1 = { 'A': ['B'], 'B': ['C'], 'C': []}
-print(graph_complement(t1))
+pprint(graph_complement(t1))
