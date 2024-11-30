@@ -1,3 +1,4 @@
+'''
 /**
  * Given a contact list where each entry is a person's name and a list of email addresses, merge
  * contacts that share any email address. Each contact can be represented as an object with a name
@@ -25,3 +26,36 @@ function mergeContacts(contacts) {
 module.exports = {
   mergeContacts,
 }
+'''
+def merge_contacts(contacts):
+  seen = {}
+  ans = {}
+
+  for name, emails in contacts.items():
+    for email in emails:
+      if email in seen:
+        name = seen[email]
+        break
+      
+    if name not in ans:
+      ans[name] = set(emails)
+    else:
+      ans[name].update(emails)
+
+    for email in emails:
+      seen[email] = name
+  return ans
+    
+t1 = {
+  "Alice": ["alice@example.com", "alice@gmail.com"],
+  "Bob": ["bob@example.com"],
+  "Alice Smith": ["alice@gmail.com"]
+  }
+
+print(merge_contacts(t1))
+'''
+ [
+   { name: "Alice Smith", emails: ["alice@example.com", "alice@gmail.com"] },
+   { name: "Bob", emails: ["bob@example.com"] }
+ ]
+''' 

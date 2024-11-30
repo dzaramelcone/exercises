@@ -1,3 +1,4 @@
+'''
 /**
  * Given a graph and a starting node, perform a depth-first traversal of the graph.
  * You can supply both a pre-order and post-order callback.
@@ -39,3 +40,30 @@ module.exports = {
   graphDFSFromNode,
   graphDFS,
 }
+'''
+
+def dfs(graph, start, preoderCallback, postorderCallback):
+  visited = set()
+  def helper(node):
+    if node in visited:
+      return
+    visited.add(node)
+    preoderCallback()
+    for neighbor in graph[node]:
+      helper(neighbor)
+    postorderCallback()
+
+
+def dfs(graph, preoderCallback, postorderCallback):
+  visited = set()
+  def helper(node):
+    if node in visited:
+      return
+    visited.add(node)
+    preoderCallback()
+    for neighbor in graph[node]:
+      helper(neighbor)
+    postorderCallback()
+
+  for node in graph:
+    helper(node)
