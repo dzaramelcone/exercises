@@ -48,4 +48,6 @@ g = {
    5: [2, 4]
 }
 pprint(g)
+# Not even confident I understand this concept enough to make more tests beyond the example on wiki.
+# Will need to revisit tomorrow.
 pprint(line(g))
