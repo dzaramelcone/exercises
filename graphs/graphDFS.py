@@ -60,10 +60,22 @@ def dfs(graph, preoderCallback, postorderCallback):
     if node in visited:
       return
     visited.add(node)
-    preoderCallback()
+    preoderCallback(node)
     for neighbor in graph[node]:
       helper(neighbor)
-    postorderCallback()
+    postorderCallback(node)
 
   for node in graph:
     helper(node)
+
+
+g = {
+   1: [2, 3, 4],
+   2: [1, 5],
+   3: [1, 4],
+   4: [1, 3, 5],
+   5: [2, 4, 6],
+   6: [5, 7],
+   7: [6]
+}
+dfs(g, lambda x: print("preorder", x), lambda x: print("postorder", x))
