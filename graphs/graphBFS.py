@@ -43,3 +43,14 @@ def graphBFS(graph, start, callback):
         visited.add(neighbor)
 
   
+
+  
+g = {
+   1: [2, 3, 4],
+   2: [1, 5],
+   3: [1, 4],
+   4: [1, 3, 5],
+   5: [2, 4]
+}
+
+graphBFS(g, 1, lambda x: print(x, g[x]))
