@@ -75,6 +75,8 @@ def minimum_steps_with_wall_removal(matrix, removal):
       # worst case is now n*m*k memory to support this..
       # is there some better solution?
       # maybe some kinda percolation solution..
+
+      # uhh, thought: could you just do bfs with this instead?
       grp = (neighbor.pos, neighbor.k)
       if grp in visited:
         continue
